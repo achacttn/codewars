@@ -1,7 +1,7 @@
 function decodeResistorColors(bands) {
     var ohmValue, formattedOhm, tolerance, fmt;
     fmt = bands.split(" ");
-    ohmValue=Number( String(colorCodes[fmt[0]])+String(colorCodes[fmt[1]]) ) ** colorCodes[fmt[2]];
+    ohmValue=Number( String(colorCodes[fmt[0]])+String(colorCodes[fmt[1]]) )* (10** colorCodes[fmt[2]]);
     if( ohmValue>999999 ){
         formattedOhm=`${ohmValue/1000000}M`;
     } else if( ohmValue>999 ){
