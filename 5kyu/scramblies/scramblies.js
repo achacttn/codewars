@@ -28,15 +28,31 @@
 
 // // optimize this further
 
-function scramble(str1, str2){
-    var array1 = str1.split("").sort(); // a, a, b, b, c
-    var array2 = str2.split("").sort(); // a, b, b, c
+// function scramble(str1, str2) {
+//     var array1 = str1.split("").sort(); // a, a, b, b, c
+//     var array2 = str2.split("").sort(); // a, b, b, c
 
-    var x=0;
-    for( var i=0; i<array2.length && x<array1.length; i++ ){
-        if( array1[x]===array2[i] ){
-            x++;
-        }
-    }
-    return ( x <= str1.length );
+//     var x=0;
+//     for( var i=0; i<array1.length && x<array2.length; i++ ){
+//         if( array1[i]===array2[x] ){
+//             x++;
+//         }
+//     }
+//     return ( x===array2.length);
+// }
+
+
+function scramble(str1, str2) {
+    // creating hash table of letter occurences in word
+    let occurences = str1.split("").reduce((arr, cur) => {
+        arr[cur] ? arr[cur]++ : arr[cur] = 1;
+        return arr;
+    }, {});
+
+    // --occurences[character] subtracts every character in str2
+    // from str1, and returns whether str1 has enough of that character
+    return str2.split("").every((character) => {
+        return --occurences[character] >= 0
+    });
 }
+scramble('cedewaraaossoqqyt', 'codewars')
