@@ -20,10 +20,13 @@ function scramble(str1, str2) {
         }
     }
     if (count === Object.keys(letterCount).length) {
+        console.log('true')
         return true;
     } else {
+        console.log('false')
         return false;
     }
 }
 
+scramble( 'katas', 'steak' )
 // optimize this further
