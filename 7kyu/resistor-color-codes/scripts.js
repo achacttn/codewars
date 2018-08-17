@@ -35,3 +35,5 @@ const colorCodes = {
     gray: 8,
     white: 9
 }
+
+console.log(decodeResistorColors("red black yellow silver"));
